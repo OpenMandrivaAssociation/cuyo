@@ -17,7 +17,7 @@ License:	GPL
 Group:		Games/Arcade
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	qt3-devel >= 3.1 bison flex SDL1.2-devel
-BuildRequires:  SDL_image1.2-devel, SDL_mixer1.2-devel
+BuildRequires:  SDL_image1.2-devel, SDL_mixer1.2-devel, SDL_image
 %description
 Cuyo is a Tetris like game, There is many different level,
 with different rules. We can play it with two players.
