@@ -15,7 +15,6 @@ Source2:	%{name}-32x32.png
 Source3:	%{name}-48x48.png
 License:	GPL
 Group:		Games/Arcade
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	qt3-devel >= 3.1 bison flex SDL1.2-devel
 BuildRequires:  SDL_image1.2-devel, SDL_mixer1.2-devel, SDL_image
 %description
