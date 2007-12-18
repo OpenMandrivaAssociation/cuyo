@@ -37,14 +37,15 @@ export UIC=%{_prefix}/lib/qt3/bin/uic
 %makeinstall	bindir=$RPM_BUILD_ROOT%{_gamesbindir} \
 		datadir=$RPM_BUILD_ROOT%{_gamesdatadir}
 
-%{__install} -d $RPM_BUILD_ROOT%{_menudir}
-%{__cat} <<EOF > $RPM_BUILD_ROOT%{_menudir}/%{name}
-?package(%{name}):command="%{_gamesbindir}/%{name}" \
-                icon=%{name}.png \
-                needs="x11" \
-                section="More Applications/Games/Arcade" \
-                title="Cuyo"\
-                longtitle="%{Summary}"
+mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications/
+cat << EOF > %buildroot%{_datadir}/applications/mandriva-%{name}.desktop
+[Desktop Entry]
+Type=Application
+Exec=%{_gamesbindir}/%{name}                
+Icon=%{name}                                
+Categories=Game;ArcadeGame;                
+Name=Cuyo                
+Comment=%{Summary}
 EOF
 
 %{__install} %{SOURCE1} -D $RPM_BUILD_ROOT%{_miconsdir}/%{name}.png
@@ -67,7 +68,7 @@ EOF
 %dir %{_gamesdatadir}/%{name}
 %{_gamesdatadir}/%{name}/*
 %{_mandir}/man6/cu*.6*
-%{_menudir}/%{name}
+%{_datadir}/applications/mandriva-%{name}.desktop
 %{_miconsdir}/%{name}.png
 %{_iconsdir}/%{name}.png
 %{_liconsdir}/%{name}.png
