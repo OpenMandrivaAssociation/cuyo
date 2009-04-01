@@ -1,6 +1,6 @@
 %define	name	cuyo
-%define	version	2.0
-%define	release	%mkrel 3
+%define	version	2.1.1
+%define	release	%mkrel 1
 %define	Summary A tetris like game
 %define prerelease alpha1
 
@@ -9,21 +9,21 @@ Name:		%{name}
 Url:		http://www.karimmi.de/cuyo/
 Version:	%{version}
 Release:	%{release}
-Source0:	%{name}-%{version}-%{prerelease}.tar.bz2
+Source0:	%{name}-%{version}.tar.bz2
 Source1:	%{name}-16x16.png
 Source2:	%{name}-32x32.png
 Source3:	%{name}-48x48.png
 License:	GPL
 Group:		Games/Arcade
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires:	qt3-devel >= 3.1 bison flex SDL1.2-devel
-BuildRequires:  SDL_image1.2-devel, SDL_mixer1.2-devel, SDL_image
+BuildRequires:	qt3-devel >= 3.1 bison flex
+BuildRequires:  %{mklibname SDL_image}-devel, %{mklibname SDL_mixer}-devel, %{mklibname SDL_image1.2_0}
 %description
 Cuyo is a Tetris like game, There is many different level,
 with different rules. We can play it with two players.
 
 %prep
-%setup -q -n %{name}-%{version}-%{prerelease}
+%setup -q -n %{name}-%{version}
 
 %build
 export MOC=%{_prefix}/lib/qt3/bin/moc
@@ -77,3 +77,7 @@ EOF
 %{_miconsdir}/%{name}.png
 %{_iconsdir}/%{name}.png
 %{_liconsdir}/%{name}.png
+%{_datadir}/games/applications/%name.desktop
+%{_datadir}/games/icons/hicolor/32x32/apps/%name.png
+%{_datadir}/games/icons/hicolor/64x64/apps/%name.png
+
