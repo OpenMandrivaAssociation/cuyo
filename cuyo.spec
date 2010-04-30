@@ -1,6 +1,6 @@
 %define	name	cuyo
 %define	version	2.1.1
-%define	release	%mkrel 2
+%define	release	%mkrel 3
 %define	Summary A tetris like game
 %define prerelease alpha1
 
@@ -17,8 +17,10 @@ Patch0:		cuyo-2.1.1-gcc44.patch
 License:	GPL
 Group:		Games/Arcade
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires:	qt3-devel >= 3.1 bison flex
-BuildRequires:  %{mklibname SDL_image}-devel, %{mklibname SDL_mixer}-devel, %{mklibname SDL_image1.2_0}
+BuildRequires:	SDL-devel
+BuildRequires:	SDL_image-devel
+BuildRequires:	SDL_mixer-devel
+
 %description
 Cuyo is a Tetris like game, There is many different level,
 with different rules. We can play it with two players.
@@ -28,11 +30,8 @@ with different rules. We can play it with two players.
 %patch0 -p0
 
 %build
-export MOC=%qt3bin/moc
-export UIC=%qt3bin/uic
 %configure2_5x	--bindir=%{_gamesbindir} \
-		--datadir=%{_gamesdatadir} \
-		--with-qt-dir=%{qt3dir}
+		--datadir=%{_gamesdatadir}
 %make
 
 %install
