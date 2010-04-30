@@ -13,6 +13,7 @@ Source0:	%{name}-%{version}.tar.bz2
 Source1:	%{name}-16x16.png
 Source2:	%{name}-32x32.png
 Source3:	%{name}-48x48.png
+Patch0:		cuyo-2.1.1-gcc44.patch
 License:	GPL
 Group:		Games/Arcade
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -24,19 +25,19 @@ with different rules. We can play it with two players.
 
 %prep
 %setup -q -n %{name}-%{version}
+%patch0 -p0
 
 %build
-export MOC=%{_prefix}/lib/qt3/bin/moc
-export UIC=%{_prefix}/lib/qt3/bin/uic
-%configure	--bindir=%{_gamesbindir} \
+export MOC=%qt3bin/moc
+export UIC=%qt3bin/uic
+%configure2_5x	--bindir=%{_gamesbindir} \
 		--datadir=%{_gamesdatadir} \
-		--with-qt-dir=%{_prefix}/lib/qt3
+		--with-qt-dir=%{qt3dir}
 %make
 
 %install
 %{__rm} -rf $RPM_BUILD_ROOT
-%makeinstall	bindir=$RPM_BUILD_ROOT%{_gamesbindir} \
-		datadir=$RPM_BUILD_ROOT%{_gamesdatadir}
+%makeinstall_std
 
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications/
 cat << EOF > %buildroot%{_datadir}/applications/mandriva-%{name}.desktop
