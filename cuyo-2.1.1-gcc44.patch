@@ -1,0 +1,10 @@
+--- src/stringzeug.h.gcc	2010-04-30 08:41:23.000000000 +0200
++++ src/stringzeug.h	2010-04-30 08:41:44.000000000 +0200
+@@ -20,6 +20,7 @@
+ 
+ #include <config.h>
+ #include <string>
++#include <cstdio>
+ 
+ 
+ 
