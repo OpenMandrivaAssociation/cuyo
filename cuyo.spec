@@ -1,6 +1,6 @@
 %define	name	cuyo
 %define	version	2.1.1
-%define	release	%mkrel 4
+%define release	5
 %define	Summary A tetris like game
 %define prerelease alpha1
 
