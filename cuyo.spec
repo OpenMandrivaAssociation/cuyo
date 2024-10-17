@@ -6,7 +6,7 @@
 
 Summary:	%{Summary}
 Name:		%{name}
-Url:		http://www.karimmi.de/cuyo/
+Url:		https://www.karimmi.de/cuyo/
 Version:	%{version}
 Release:	%{release}
 Source0:	%{name}-%{version}.tar.bz2
